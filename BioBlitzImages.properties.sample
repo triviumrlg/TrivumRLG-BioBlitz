@@ -1,0 +1,45 @@
+#### These need to be set to the correct values for your Noah and Flickr API keys
+
+bioblitz.noah.apikey=XXX
+
+bioblitz.flickr.apikey=XXX
+bioblitz.flickr.secret=XXX
+
+
+#### You don't need to change any of the below values, but you have the option to
+
+#Input file to get scientist list from
+#bioblitz.scientistfile=scientists.ttl
+
+#Project Noah API endpoint.
+#bioblitz.noah.endpoint=http://www.projectnoah.org/api/v1/
+
+#Project Noah mission ID to pull from.  Default is 6986014, BioBlitz: Saguaro National Park
+#bioblitz.noah.missionID=6986014
+
+#If set, saves Noah API request / response data to the specified log file
+#bioblitz.noah.logfile=XXXXX
+
+#If set, limits the number of photos pulled from Project Noah
+#bioblitz.noah.limit=10
+
+#Flickr API endpoint.
+#bioblitz.flickr.endpoint=http://api.flickr.com/
+
+#Flickr photo stream URL to pull from.  Default is the one for BioBlitz: Saguaro National Park
+#bioblitz.flickr.groupURL=http://www.flickr.com/groups/1725510@N21
+
+#If set, limits the number of photos pulled from Flickr
+#bioblitz.flickr.limit=10
+
+#If set to true, will dump the flickr request/response data to stdout
+#bioblitz.flickr.dumpstream=true
+
+#EOL API endpoint.
+#bioblitz.eol.endpoint=http://eol.org/api/
+
+#Object cache for EOL data
+#bioblitz.eol.cachefile=eol_cache.obj
+
+#If set, saves EOL API request / response data to the specified log file
+#bioblitz.eol.logfile=XXX

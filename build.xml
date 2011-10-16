@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<project name="bioblitzimages" default="makejar" basedir=".">
+	<property name="src" location="src" />
+	<property name="lib" location="lib" />
+	<property name="bin" location="bin" />
+	<property name="build" location="build" />
+	<property name="models" location="models" />
+	<property name="bioblitzimages.jar" value="bioblitzimages.jar" />
+
+	<path id="proj.libs">
+		<fileset dir="${lib}">
+			<include name="*.jar" />
+		</fileset>
+	</path>
+
+	<path id="proj.classpath">
+		<path refid="proj.libs" />
+		<pathelement location="${bin}" />
+	</path>
+
+	<target name="init">
+		<tstamp />
+		<mkdir dir="${bin}" />
+		<mkdir dir="${build}" />
+	</target>
+
+	<target name="compile" depends="init">
+		<javac srcdir="${src}" destdir="${bin}" includeantruntime="false" debug="true" debuglevel="lines,source">
+			<classpath refid="proj.classpath" />
+		</javac>
+	</target>
+
+	<target name="makejar" depends="compile">
+		<pathconvert property="proj.string.classpath" pathsep=" ">
+			<path refid="proj.libs" />
+			<map from="${lib}/" to="" />
+		</pathconvert>
+
+		<jar destfile="${build}/${bioblitzimages.jar}" basedir="${bin}">
+			<manifest>
+				<attribute name="Main-Class" value="org.eclipse.jdt.internal.jarinjarloader.JarRsrcLoader" />
+				<attribute name="Rsrc-Main-Class" value="com.triviumrlg.bioblitz.Main" />
+				<attribute name="Class-Path" value="." />
+				<attribute name="Rsrc-Class-Path" value="./ ${proj.string.classpath}" />
+			</manifest>
+			<fileset dir="${bin}" />
+			<fileset dir="${models}" />
+			<zipfileset src="${lib}/jar-in-jar-loader.zip" />
+			<zipfileset dir="${lib}" includes="*.jar" />
+		</jar>
+	</target>
+
+	<target name="clean">
+		<delete dir="${bin}" />
+		<delete dir="${build}" />
+	</target>
+</project>

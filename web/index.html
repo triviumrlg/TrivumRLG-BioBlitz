@@ -1,0 +1,115 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <title>Saguaro National Park BioBlitz 2011</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+  <link rel="shortcut icon" href="style/favicon.ico" type="image/x-icon" />
+  <link href="style/style.css" rel="stylesheet" type="text/css" />
+
+  <link href="data.js" type="application/json" rel="exhibit/data" />
+
+  <script src="http://trunk.simile-widgets.org/exhibit/api/exhibit-api.js"></script>
+  <script src="http://trunk.simile-widgets.org/exhibit/api/extensions/time/time-extension.js"></script>
+  <script src="http://trunk.simile-widgets.org/exhibit/api/extensions/map/map-extension.js?gmapkey=ABQIAAAAy8U9B04d7RS_X2CFVtaJvhRFdO5h7CS1tqZ2w2R3LPLWPGfEwRT3J3CLBozqDtAnNC0aFEfO0kz2sA"></script>
+</head>
+
+<body>
+  <div id="bb_header">
+    <a href="triviumrlg.com">
+      <img class="logo" src="style/logo_small.png" />
+    </a>
+    <h4>BioBlitz Images: Linked data from Project Noah and Flickr</h4>
+  </div>
+
+  <div id="bb_main">
+    <div id="bb_facets">
+      <div ex:role="facet" ex:facetClass="TextSearch" ex:facetLabel="Search"></div>
+      <div ex:role="facet" ex:expression=".source" ex:facetLabel="Source" ex:height="50px"></div>
+      <div ex:role="facet" ex:expression=".state" ex:facetLabel="State"></div>
+      <div ex:role="facet" ex:expression=".photographer" ex:facetLabel="Photographer" ex:height="300px"></div>
+      <div ex:role="facet" ex:expression=".kingdom" ex:facetLabel="Kingdom (EOL)"></div>
+      <div ex:role="facet" ex:expression=".phylum" ex:facetLabel="Phylum (EOL)"></div>
+      <div ex:role="facet" ex:expression=".class" ex:facetLabel="Class (EOL)"></div>
+      <div ex:role="facet" ex:expression=".order" ex:facetLabel="Order (EOL)"></div>
+      <div ex:role="facet" ex:expression=".family" ex:facetLabel="Family (EOL)"></div>
+      <div ex:role="facet" ex:expression=".species" ex:facetLabel="Scientific Name" ex:height="300px"></div>
+      <div ex:role="facet" ex:facetClass="Cloud" ex:expression=".keyword" ex:facetLabel="Keywords" ex:height="300px"></div>
+    </div>
+      
+    <div id="bb_content">
+      <div ex:role="viewPanel">
+        <div ex:role="view"
+             ex:viewClass="Thumbnail"
+             ex:grouped="false"
+             ex:paginate="true"
+             ex:alwaysShowPagingControls="true"
+             ex:directions="descending"
+             ex:orders=".submitted">
+          <div ex:role="lens" class="thumbnail">
+            <a class="portfolio_item" target="_blank" ex:href-content=".homepage">
+              <img ex:src-content=".thumbnail" />
+              <br />
+              <span ex:content="concat('<nobr>', .label, '</nobr><br /><nobr>', .species, '</nobr>')"></span>
+            </a>
+          </div>
+        </div>
+  
+        <div ex:role="view"
+             ex:showAll="false" 
+             ex:grouped="false" 
+             ex:paginate="true" 
+             ex:alwaysShowPagingControls="true"
+             ex:pagingControlLocations="top"
+             ex:label="Data">
+        </div>
+  
+        <div ex:role="view"
+             ex:viewClass="Map"
+             ex:label="Map"
+             ex:latlng=".lat_long"
+             ex:center="32.221743,-110.926479"
+             ex:zoom="11"
+             ex:mapHeight="500"
+             ex:overviewControl="true"
+             ex:showHeader="false">
+          <div ex:role="lens" style="display: none; height: 300px; width: 300px">
+            <a class="portfolio_item" target="_blank" ex:href-content=".homepage">
+              <img ex:src-content=".thumbnail" />
+            </a>
+            <br />
+            Label: <span ex:content=".label"></span>
+            <br />
+            State: <span ex:content=".state"></span>
+            <br />
+            <div ex:if-exists=".species">Species
+              <span ex:content=".species"></span>
+            </div>
+          </div>
+        </div>
+  
+        <div ex:role="view"
+             ex:viewClass="Timeline"
+             ex:start=".created">
+          <div ex:role="lens" style="display: none;">
+            <div style="float: left; margin-right: 10px;">
+              <a class="portfolio_item" target="_blank" ex:href-content=".homepage">
+                <img ex:src-content=".small_thumbnail" />
+              </a>
+            </div>
+            <div style="float: left">
+              Label: <span ex:content=".label"></span>
+              <br />
+              State: <span ex:content=".state"></span>
+              <br />
+              <div ex:if-exists=".species">Species
+                <span ex:content=".species"></span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

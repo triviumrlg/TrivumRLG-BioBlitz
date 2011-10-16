@@ -1,0 +1,77 @@
+<?xml version="1.0"?>
+<rdf:RDF
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:owl="http://www.w3.org/2002/07/owl#"
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+    xmlns:noah="http://triviumrlg.net/bioblitz/noah#"
+    xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+  xml:base="http://triviumrlg.net/bioblitz/noah">
+  <owl:Ontology rdf:about="">
+    <owl:versionInfo rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Created with TopBraid Composer</owl:versionInfo>
+  </owl:Ontology>
+  <owl:Class rdf:ID="Spotting">
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Project Noah Spotting</rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+  </owl:Class>
+  <owl:Class rdf:ID="Comment">
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Project Noah Comment</rdfs:label>
+  </owl:Class>
+  <owl:Class rdf:ID="User">
+    <rdfs:subClassOf rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Project Noah User</rdfs:label>
+  </owl:Class>
+  <owl:ObjectProperty rdf:ID="hasSecondaryImage"/>
+  <owl:ObjectProperty rdf:ID="hasHomepage"/>
+  <owl:ObjectProperty rdf:ID="hasPrimarySmallThumbnail">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >TODO: replace with SPIN</rdfs:comment>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="userImage"/>
+  <owl:ObjectProperty rdf:ID="hasPrimaryThumbnail">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >TODO: replace with SPIN</rdfs:comment>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="wiki_link"/>
+  <owl:ObjectProperty rdf:ID="hasComment"/>
+  <owl:ObjectProperty rdf:ID="hasPrimaryImage"/>
+  <owl:ObjectProperty rdf:ID="hasAuthor"/>
+  <owl:ObjectProperty rdf:ID="eol_link"/>
+  <owl:DatatypeProperty rdf:ID="username">
+    <rdfs:domain rdf:resource="#User"/>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:ID="spotted_on"/>
+  <owl:DatatypeProperty rdf:ID="habitat"/>
+  <owl:DatatypeProperty rdf:ID="vote_count"/>
+  <owl:DatatypeProperty rdf:ID="created"/>
+  <owl:DatatypeProperty rdf:ID="like_count"/>
+  <owl:DatatypeProperty rdf:ID="spotting_id">
+    <rdfs:domain rdf:resource="#Spotting"/>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:ID="commentId">
+    <rdfs:domain rdf:resource="#Comment"/>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:ID="suggestion_count"/>
+  <owl:DatatypeProperty rdf:ID="submitted_on"/>
+  <owl:DatatypeProperty rdf:ID="flag_count"/>
+  <owl:DatatypeProperty rdf:ID="description"/>
+  <owl:DatatypeProperty rdf:ID="eol_title"/>
+  <owl:DatatypeProperty rdf:ID="text"/>
+  <owl:DatatypeProperty rdf:ID="notes"/>
+  <owl:DatatypeProperty rdf:ID="needs_id"/>
+  <owl:DatatypeProperty rdf:ID="latitude"/>
+  <owl:DatatypeProperty rdf:ID="province_name"/>
+  <owl:DatatypeProperty rdf:ID="country_name"/>
+  <owl:DatatypeProperty rdf:ID="urban_area_name"/>
+  <owl:DatatypeProperty rdf:ID="wiki_title"/>
+  <owl:DatatypeProperty rdf:ID="comment_count"/>
+  <owl:DatatypeProperty rdf:ID="category"/>
+  <owl:DatatypeProperty rdf:ID="name"/>
+  <owl:DatatypeProperty rdf:ID="longitude"/>
+  <owl:DatatypeProperty rdf:ID="tag"/>
+</rdf:RDF>
+
+<!-- Created with TopBraid -->

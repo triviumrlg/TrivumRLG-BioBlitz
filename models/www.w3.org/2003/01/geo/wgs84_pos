@@ -1,0 +1,72 @@
+<?xml version="1.0"?>
+<rdf:RDF
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:owl="http://www.w3.org/2002/07/owl#"
+    xmlns:dc="http://purl.org/dc/elements/1.1/"
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+    xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+    xmlns:geo="http://www.w3.org/2003/01/geo/wgs84_pos#"
+  xml:base="http://www.w3.org/2003/01/geo/wgs84_pos">
+  <owl:Ontology rdf:about="">
+    <rdfs:comment>A vocabulary for representing latitude, longitude and 
+ altitude information in the WGS84 geodetic reference datum.</rdfs:comment>
+    <owl:versionInfo rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >This version has been modified to remove links into DC and FOAF namespaces.</owl:versionInfo>
+  </owl:Ontology>
+  <rdfs:Class rdf:ID="Point">
+    <rdfs:subClassOf>
+      <rdfs:Class rdf:ID="SpatialThing"/>
+    </rdfs:subClassOf>
+    <rdfs:label>point</rdfs:label>
+    <rdfs:comment>A point, typically described using a coordinate system relative to Earth, such as WGS84.
+  </rdfs:comment>
+    <rdfs:comment> 
+Uniquely identified by lat/long/alt. i.e.
+
+spaciallyIntersects(P1, P2) :- lat(P1, LAT), long(P1, LONG), alt(P1, ALT),
+  lat(P2, LAT), long(P2, LONG), alt(P2, ALT).
+
+sameThing(P1, P2) :- type(P1, Point), type(P2, Point), spaciallyIntersects(P1, P2).
+  </rdfs:comment>
+  </rdfs:Class>
+  <rdfs:Class rdf:about="#SpatialThing">
+    <rdfs:label>SpatialThing</rdfs:label>
+    <rdfs:comment>Anything with spatial extent, i.e. size, shape, or position.
+ e.g. people, places, bowling balls, as well as abstract areas like cubes.
+	</rdfs:comment>
+  </rdfs:Class>
+  <rdf:Property rdf:ID="lat_long">
+    <rdfs:label>lat/long</rdfs:label>
+    <rdfs:comment>A comma-separated representation of a latitude, longitude coordinate.</rdfs:comment>
+  </rdf:Property>
+  <rdf:Property rdf:ID="long">
+    <rdfs:domain rdf:resource="#SpatialThing"/>
+    <rdfs:label>longitude</rdfs:label>
+    <rdfs:comment>The WGS84 longitude of a SpatialThing (decimal degrees).</rdfs:comment>
+  </rdf:Property>
+  <rdf:Property rdf:ID="lat">
+    <rdfs:domain rdf:resource="#SpatialThing"/>
+    <rdfs:label>latitude</rdfs:label>
+    <rdfs:comment>The WGS84 latitude of a SpatialThing (decimal degrees).</rdfs:comment>
+  </rdf:Property>
+  <rdf:Property rdf:ID="alt">
+    <rdfs:domain rdf:resource="#SpatialThing"/>
+    <rdfs:label>altitude</rdfs:label>
+    <rdfs:comment>The WGS84 altitude of a SpatialThing (decimal meters 
+above the local reference ellipsoid).</rdfs:comment>
+  </rdf:Property>
+  <rdf:Property rdf:ID="location">
+    <rdfs:range rdf:resource="#SpatialThing"/>
+    <rdfs:label>location</rdfs:label>
+    <rdfs:comment>The relation between something and the point, 
+ or other geometrical thing in space, where it is.  For example, the realtionship between
+ a radio tower and a Point with a given lat and long.
+ Or a relationship between a park and its outline as a closed arc of points, or a road and
+ its location as a arc (a sequence of points).
+ Clearly in practice there will be limit to the accuracy of any such statement, but one would expect
+ an accuracy appropriate for the size of the object and uses such as mapping .
+ </rdfs:comment>
+  </rdf:Property>
+</rdf:RDF>
+
+<!-- Created with TopBraid -->

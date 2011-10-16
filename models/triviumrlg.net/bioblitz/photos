@@ -1,0 +1,162 @@
+<?xml version="1.0"?>
+<rdf:RDF
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:flickr="http://triviumrlg.net/bioblitz/flickr#"
+    xmlns:spin="http://spinrdf.org/spin#"
+    xmlns:fn="http://www.w3.org/2005/xpath-functions#"
+    xmlns:sp="http://spinrdf.org/sp#"
+    xmlns:owl="http://www.w3.org/2002/07/owl#"
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+    xmlns:noah="http://triviumrlg.net/bioblitz/noah#"
+    xmlns:photos="http://triviumrlg.net/bioblitz/photos#"
+    xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+    xmlns:geo="http://www.w3.org/2003/01/geo/wgs84_pos#"
+  xml:base="http://triviumrlg.net/bioblitz/photos">
+  <owl:Ontology rdf:about="">
+    <owl:versionInfo rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Created with TopBraid Composer</owl:versionInfo>
+    <owl:imports rdf:resource="http://purl.org/dc/terms/"/>
+    <owl:imports rdf:resource="http://www.w3.org/2003/01/geo/wgs84_pos"/>
+    <owl:imports rdf:resource="http://triviumrlg.net/bioblitz/flickr"/>
+    <owl:imports rdf:resource="http://triviumrlg.net/bioblitz/noah"/>
+  </owl:Ontology>
+  <owl:Class rdf:ID="Photo">
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Photo</rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+  </owl:Class>
+  <owl:Class rdf:ID="Comment">
+    <rdfs:subClassOf rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+  </owl:Class>
+  <owl:ObjectProperty rdf:ID="hasThumbnail">
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Thumbnail</rdfs:label>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="hasPhotographer">
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Photographer</rdfs:label>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="hasSmallThumbnail">
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Small Thumbnail</rdfs:label>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="hasComment">
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Has Comment</rdfs:label>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="hasHomepage">
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Homepage</rdfs:label>
+  </owl:ObjectProperty>
+  <rdf:Property rdf:ID="source">
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Photo Source</rdfs:label>
+  </rdf:Property>
+  <rdf:Property rdf:ID="photographerName">
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Photographer Name</rdfs:label>
+  </rdf:Property>
+  <rdf:Property rdf:ID="text"/>
+  <rdf:Property rdf:ID="keyword">
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Keywords</rdfs:label>
+  </rdf:Property>
+  <rdf:Description rdf:about="http://triviumrlg.net/bioblitz/flickr#Comment">
+    <rdfs:subClassOf rdf:resource="#Comment"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://triviumrlg.net/bioblitz/noah#username">
+    <rdfs:subPropertyOf rdf:resource="#photographerName"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://triviumrlg.net/bioblitz/noah#Spotting">
+    <rdfs:subClassOf rdf:resource="#Photo"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://triviumrlg.net/bioblitz/noah#spotted_on">
+    <rdfs:subPropertyOf rdf:resource="http://purl.org/dc/terms/created"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://triviumrlg.net/bioblitz/noah#hasPrimaryThumbnail">
+    <rdfs:subPropertyOf rdf:resource="#hasThumbnail"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://triviumrlg.net/bioblitz/flickr#hasAuthor">
+    <rdfs:subPropertyOf rdf:resource="#hasPhotographer"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://triviumrlg.net/bioblitz/noah#created">
+    <rdfs:subPropertyOf rdf:resource="http://purl.org/dc/terms/created"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://triviumrlg.net/bioblitz/flickr#hasHomepage">
+    <rdfs:subPropertyOf rdf:resource="#hasHomepage"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://triviumrlg.net/bioblitz/noah#hasAuthor">
+    <rdfs:subPropertyOf rdf:resource="#hasPhotographer"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://triviumrlg.net/bioblitz/flickr#hasComment">
+    <rdfs:subPropertyOf rdf:resource="#hasComment"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://triviumrlg.net/bioblitz/flickr#userName">
+    <rdfs:subPropertyOf rdf:resource="#photographerName"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://triviumrlg.net/bioblitz/flickr#dateCreated">
+    <rdfs:subPropertyOf rdf:resource="http://purl.org/dc/terms/created"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://triviumrlg.net/bioblitz/flickr#latitude">
+    <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2003/01/geo/wgs84_pos#lat"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://triviumrlg.net/bioblitz/flickr#longitude">
+    <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2003/01/geo/wgs84_pos#long"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://triviumrlg.net/bioblitz/flickr#datePosted">
+    <rdfs:subPropertyOf rdf:resource="http://purl.org/dc/terms/issued"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://triviumrlg.net/bioblitz/flickr#Photo">
+    <rdfs:subClassOf rdf:resource="#Photo"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://triviumrlg.net/bioblitz/flickr#hasSmallImage">
+    <rdfs:subPropertyOf rdf:resource="#hasThumbnail"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://triviumrlg.net/bioblitz/noah#submitted_on">
+    <rdfs:subPropertyOf rdf:resource="http://purl.org/dc/terms/issued"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://triviumrlg.net/bioblitz/flickr#dateTaken">
+    <rdfs:subPropertyOf rdf:resource="http://purl.org/dc/terms/created"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://triviumrlg.net/bioblitz/flickr#title">
+    <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2000/01/rdf-schema#label"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://triviumrlg.net/bioblitz/noah#hasPrimarySmallThumbnail">
+    <rdfs:subPropertyOf rdf:resource="#hasSmallThumbnail"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://triviumrlg.net/bioblitz/noah#text">
+    <rdfs:subPropertyOf rdf:resource="#text"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://triviumrlg.net/bioblitz/noah#hasComment">
+    <rdfs:subPropertyOf rdf:resource="#hasComment"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://triviumrlg.net/bioblitz/flickr#text">
+    <rdfs:subPropertyOf rdf:resource="#text"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://triviumrlg.net/bioblitz/noah#latitude">
+    <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2003/01/geo/wgs84_pos#lat"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://triviumrlg.net/bioblitz/flickr#keyword">
+    <rdfs:subPropertyOf rdf:resource="#keyword"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://triviumrlg.net/bioblitz/noah#hasHomepage">
+    <rdfs:subPropertyOf rdf:resource="#hasHomepage"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://triviumrlg.net/bioblitz/flickr#hasSmallSqaureImage">
+    <rdfs:subPropertyOf rdf:resource="#hasSmallThumbnail"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://triviumrlg.net/bioblitz/noah#Comment">
+    <rdfs:subClassOf rdf:resource="#Comment"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://triviumrlg.net/bioblitz/noah#name">
+    <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2000/01/rdf-schema#label"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://triviumrlg.net/bioblitz/noah#longitude">
+    <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2003/01/geo/wgs84_pos#long"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://triviumrlg.net/bioblitz/noah#tag">
+    <rdfs:subPropertyOf rdf:resource="#keyword"/>
+  </rdf:Description>
+</rdf:RDF>
+
+<!-- Created with TopBraid -->

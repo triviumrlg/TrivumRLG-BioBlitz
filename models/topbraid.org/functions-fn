@@ -1,0 +1,314 @@
+<?xml version="1.0"?>
+<rdf:RDF
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:spin="http://spinrdf.org/spin#"
+    xmlns:fn="http://www.w3.org/2005/xpath-functions#"
+    xmlns:owl="http://www.w3.org/2002/07/owl#"
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+    xmlns:sm="http://topbraid.org/sparqlmotion#"
+    xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+    xmlns:spl="http://spinrdf.org/spl#"
+  xml:base="http://topbraid.org/functions-fn">
+  <owl:Ontology rdf:about="">
+    <owl:versionInfo rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >1.1.0</owl:versionInfo>
+    <owl:imports rdf:resource="http://spinrdf.org/spl"/>
+  </owl:Ontology>
+  <spin:Function rdf:about="http://www.w3.org/2005/xpath-functions#ceiling">
+    <spin:returnType rdf:resource="http://www.w3.org/2001/XMLSchema#double"/>
+    <spin:constraint>
+      <spl:Argument>
+        <spl:valueType rdf:resource="http://www.w3.org/2000/01/rdf-schema#Literal"/>
+        <spl:predicate rdf:resource="http://spinrdf.org/sp#arg1"/>
+        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+        >the number to get the ceiling of</rdfs:comment>
+      </spl:Argument>
+    </spin:constraint>
+    <rdfs:comment>Returns the smallest integer value less than the argument (as a double).</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="http://spinrdf.org/spl#MathematicalFunctions"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >ceiling</rdfs:label>
+  </spin:Function>
+  <spin:Function rdf:about="http://www.w3.org/2005/xpath-functions#lower-case">
+    <spin:returnType rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:subClassOf rdf:resource="http://spinrdf.org/spl#StringFunctions"/>
+    <spin:constraint>
+      <spl:Argument>
+        <spl:valueType rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <spl:predicate rdf:resource="http://spinrdf.org/sp#arg1"/>
+        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+        >the string to convert to lower case</rdfs:comment>
+      </spl:Argument>
+    </spin:constraint>
+    <rdfs:comment>Returns a string which is the lower case equivalent of the argument.</rdfs:comment>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >lower-case</rdfs:label>
+  </spin:Function>
+  <spin:Function rdf:about="http://www.w3.org/2005/xpath-functions#boolean">
+    <spin:returnType rdf:resource="http://www.w3.org/2001/XMLSchema#boolean"/>
+    <spin:constraint>
+      <spl:Argument>
+        <spl:valueType rdf:resource="http://www.w3.org/2000/01/rdf-schema#Literal"/>
+        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+        >The input value.</rdfs:comment>
+        <spl:predicate rdf:resource="http://spinrdf.org/sp#arg1"/>
+      </spl:Argument>
+    </spin:constraint>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Gets the effective boolean value of an input node, e.g. 1 becomes true.</rdfs:comment>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >boolean</rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://spinrdf.org/spl#BooleanFunctions"/>
+  </spin:Function>
+  <spin:Function rdf:about="http://www.w3.org/2005/xpath-functions#upper-case">
+    <spin:returnType rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:subClassOf rdf:resource="http://spinrdf.org/spl#StringFunctions"/>
+    <spin:constraint>
+      <spl:Argument>
+        <spl:valueType rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <spl:predicate rdf:resource="http://spinrdf.org/sp#arg1"/>
+        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+        >the text to convert to upper-case</rdfs:comment>
+      </spl:Argument>
+    </spin:constraint>
+    <rdfs:comment>Returns a string which is the upper case equivalent of the argument.</rdfs:comment>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >upper-case</rdfs:label>
+  </spin:Function>
+  <spin:Function rdf:about="http://www.w3.org/2005/xpath-functions#floor">
+    <spin:returnType rdf:resource="http://www.w3.org/2001/XMLSchema#double"/>
+    <spin:constraint>
+      <spl:Argument>
+        <spl:valueType rdf:resource="http://www.w3.org/2000/01/rdf-schema#Literal"/>
+        <spl:predicate rdf:resource="http://spinrdf.org/sp#arg1"/>
+        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+        >the number to get the floor of</rdfs:comment>
+      </spl:Argument>
+    </spin:constraint>
+    <rdfs:comment>Returns the greatest integer value less than the argument (as a double).</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="http://spinrdf.org/spl#MathematicalFunctions"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >floor</rdfs:label>
+  </spin:Function>
+  <spin:Function rdf:about="http://www.w3.org/2005/xpath-functions#not">
+    <spin:returnType rdf:resource="http://www.w3.org/2001/XMLSchema#boolean"/>
+    <spin:constraint>
+      <spl:Argument>
+        <spl:valueType rdf:resource="http://www.w3.org/2000/01/rdf-schema#Literal"/>
+        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+        >The input node.</rdfs:comment>
+        <spl:predicate rdf:resource="http://spinrdf.org/sp#arg1"/>
+      </spl:Argument>
+    </spin:constraint>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Negates a boolean value.</rdfs:comment>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >not</rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://spinrdf.org/spl#BooleanFunctions"/>
+  </spin:Function>
+  <spin:Function rdf:about="http://www.w3.org/2005/xpath-functions#concat">
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >concat</rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://spinrdf.org/spl#StringFunctions"/>
+    <rdfs:comment>Returns the concatenation of two (or more) strings.</rdfs:comment>
+    <spin:constraint>
+      <spl:Argument>
+        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+        >the first string</rdfs:comment>
+        <spl:predicate rdf:resource="http://spinrdf.org/sp#arg1"/>
+        <spl:valueType rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+      </spl:Argument>
+    </spin:constraint>
+    <spin:constraint>
+      <spl:Argument>
+        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+        >the second string</rdfs:comment>
+        <spl:predicate rdf:resource="http://spinrdf.org/sp#arg2"/>
+        <spl:valueType rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+      </spl:Argument>
+    </spin:constraint>
+    <spin:returnType rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+  </spin:Function>
+  <spin:Function rdf:about="http://www.w3.org/2005/xpath-functions#abs">
+    <spin:returnType rdf:resource="http://www.w3.org/2000/01/rdf-schema#Literal"/>
+    <spin:constraint>
+      <spl:Argument>
+        <spl:valueType rdf:resource="http://www.w3.org/2000/01/rdf-schema#Literal"/>
+        <spl:predicate rdf:resource="http://spinrdf.org/sp#arg1"/>
+        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+        >the number to get the absolute value of</rdfs:comment>
+      </spl:Argument>
+    </spin:constraint>
+    <rdfs:comment>Returns the absolute value of the argument.</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="http://spinrdf.org/spl#MathematicalFunctions"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >abs</rdfs:label>
+  </spin:Function>
+  <spin:Function rdf:about="http://www.w3.org/2005/xpath-functions#substring">
+    <spin:returnType rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >substring</rdfs:label>
+    <rdfs:comment>Returns the substring of a string, given by startIndex (integer) and, optionally, length length. Absence of length means to end of string.  Strings are indexed from zero. Strings start from one, not zero as they do in Java and C#. 3rd argument is the length, like C# but unlike Java, where it is the endIndex.</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="http://spinrdf.org/spl#StringFunctions"/>
+    <spin:constraint>
+      <spl:Argument>
+        <spl:valueType rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <spl:predicate rdf:resource="http://spinrdf.org/sp#arg1"/>
+        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+        >the text to get a sub-string of</rdfs:comment>
+      </spl:Argument>
+    </spin:constraint>
+    <spin:constraint>
+      <spl:Argument>
+        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+        >the index of the first character (1 is the first character)</rdfs:comment>
+        <spl:predicate rdf:resource="http://spinrdf.org/sp#arg2"/>
+        <spl:valueType rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
+      </spl:Argument>
+    </spin:constraint>
+    <spin:constraint>
+      <spl:Argument>
+        <spl:optional rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean"
+        >true</spl:optional>
+        <spl:valueType rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
+        <spl:predicate rdf:resource="http://spinrdf.org/sp#arg3"/>
+        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+        >the (optional) number of characters to include in the substring</rdfs:comment>
+      </spl:Argument>
+    </spin:constraint>
+  </spin:Function>
+  <spin:Function rdf:about="http://www.w3.org/2005/xpath-functions#round">
+    <spin:returnType rdf:resource="http://www.w3.org/2001/XMLSchema#int"/>
+    <spin:constraint>
+      <spl:Argument>
+        <spl:valueType rdf:resource="http://www.w3.org/2000/01/rdf-schema#Literal"/>
+        <spl:predicate rdf:resource="http://spinrdf.org/sp#arg1"/>
+        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+        >the number to round</rdfs:comment>
+      </spl:Argument>
+    </spin:constraint>
+    <rdfs:comment>Returns the nearest integer value to the argument.</rdfs:comment>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >round</rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://spinrdf.org/spl#MathematicalFunctions"/>
+  </spin:Function>
+  <spin:Function rdf:about="http://www.w3.org/2005/xpath-functions#ends-with">
+    <spin:returnType rdf:resource="http://www.w3.org/2001/XMLSchema#boolean"/>
+    <rdfs:comment>Test whether string ends with substr.</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="http://spinrdf.org/spl#StringFunctions"/>
+    <spin:constraint>
+      <spl:Argument>
+        <spl:valueType rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <spl:predicate rdf:resource="http://spinrdf.org/sp#arg1"/>
+        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+        >the (larger) text string to search in</rdfs:comment>
+      </spl:Argument>
+    </spin:constraint>
+    <spin:constraint>
+      <spl:Argument>
+        <spl:valueType rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <spl:predicate rdf:resource="http://spinrdf.org/sp#arg2"/>
+        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+        >the sub-string to search for</rdfs:comment>
+      </spl:Argument>
+    </spin:constraint>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >ends-with</rdfs:label>
+  </spin:Function>
+  <spin:Function rdf:about="http://www.w3.org/2005/xpath-functions#string-length">
+    <spin:returnType rdf:resource="http://www.w3.org/2001/XMLSchema#int"/>
+    <rdfs:subClassOf rdf:resource="http://spinrdf.org/spl#StringFunctions"/>
+    <spin:constraint>
+      <spl:Argument>
+        <spl:valueType rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <spl:predicate rdf:resource="http://spinrdf.org/sp#arg1"/>
+        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+        >the text string to get the length of</rdfs:comment>
+      </spl:Argument>
+    </spin:constraint>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >string-length</rdfs:label>
+    <rdfs:comment>Gets the length of a string (number of characters).</rdfs:comment>
+  </spin:Function>
+  <spin:Function rdf:about="http://www.w3.org/2005/xpath-functions#matches">
+    <spin:returnType rdf:resource="http://www.w3.org/2001/XMLSchema#boolean"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >matches</rdfs:label>
+    <rdfs:comment>Performs string pattern matching based on regular expressions.</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="http://spinrdf.org/spl#StringFunctions"/>
+    <spin:constraint>
+      <spl:Argument>
+        <spl:valueType rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <spl:predicate rdf:resource="http://spinrdf.org/sp#arg1"/>
+        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+        >the string to search in</rdfs:comment>
+      </spl:Argument>
+    </spin:constraint>
+    <spin:constraint>
+      <spl:Argument>
+        <spl:valueType rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <spl:predicate rdf:resource="http://spinrdf.org/sp#arg2"/>
+        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+        >the pattern matching string</rdfs:comment>
+      </spl:Argument>
+    </spin:constraint>
+    <spin:constraint>
+      <spl:Argument>
+        <spl:optional rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean"
+        >true</spl:optional>
+        <spl:valueType rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <spl:predicate rdf:resource="http://spinrdf.org/sp#arg3"/>
+        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+        >the (optional) arguments for the regular expression matcher</rdfs:comment>
+      </spl:Argument>
+    </spin:constraint>
+  </spin:Function>
+  <spin:Function rdf:about="http://www.w3.org/2005/xpath-functions#starts-with">
+    <spin:returnType rdf:resource="http://www.w3.org/2001/XMLSchema#boolean"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >starts-with</rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://spinrdf.org/spl#StringFunctions"/>
+    <spin:constraint>
+      <spl:Argument>
+        <spl:valueType rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <spl:predicate rdf:resource="http://spinrdf.org/sp#arg1"/>
+        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+        >the (larger) string to search in</rdfs:comment>
+      </spl:Argument>
+    </spin:constraint>
+    <spin:constraint>
+      <spl:Argument>
+        <spl:valueType rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <spl:predicate rdf:resource="http://spinrdf.org/sp#arg2"/>
+        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+        >the sub-string to search for</rdfs:comment>
+      </spl:Argument>
+    </spin:constraint>
+    <rdfs:comment>Test whether a string (?arg1) starts with a sub-string (?arg2).</rdfs:comment>
+  </spin:Function>
+  <spin:Function rdf:about="http://www.w3.org/2005/xpath-functions#contains">
+    <rdfs:comment>Checks if a string (?arg1) contains a given sub-string (?arg2).</rdfs:comment>
+    <spin:returnType rdf:resource="http://www.w3.org/2001/XMLSchema#boolean"/>
+    <spin:constraint>
+      <spl:Argument>
+        <spl:valueType rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <spl:predicate rdf:resource="http://spinrdf.org/sp#arg1"/>
+        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+        >the (larger) string to search the substring in</rdfs:comment>
+      </spl:Argument>
+    </spin:constraint>
+    <rdfs:subClassOf rdf:resource="http://spinrdf.org/spl#StringFunctions"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >contains</rdfs:label>
+    <spin:constraint>
+      <spl:Argument>
+        <spl:valueType rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <spl:predicate rdf:resource="http://spinrdf.org/sp#arg2"/>
+        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+        >the sub-string to search for</rdfs:comment>
+      </spl:Argument>
+    </spin:constraint>
+  </spin:Function>
+</rdf:RDF>
+
+<!-- Created with TopBraid -->

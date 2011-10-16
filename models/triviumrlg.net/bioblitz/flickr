@@ -1,0 +1,72 @@
+<?xml version="1.0"?>
+<rdf:RDF
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:flickr="http://triviumrlg.net/bioblitz/flickr#"
+    xmlns:owl="http://www.w3.org/2002/07/owl#"
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+    xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+  xml:base="http://triviumrlg.net/bioblitz/flickr">
+  <owl:Ontology rdf:about="">
+    <owl:versionInfo rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Created with TopBraid Composer</owl:versionInfo>
+  </owl:Ontology>
+  <owl:Class rdf:ID="Comment">
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Flickr Comment</rdfs:label>
+  </owl:Class>
+  <owl:Class rdf:ID="Tag">
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Flickr Tag</rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+  </owl:Class>
+  <owl:Class rdf:ID="Photo">
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Flickr Photo</rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+  </owl:Class>
+  <owl:Class rdf:ID="User">
+    <rdfs:subClassOf rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Flickr User</rdfs:label>
+  </owl:Class>
+  <owl:ObjectProperty rdf:ID="hasThumbnail"/>
+  <owl:ObjectProperty rdf:ID="hasSmallSqaureImage"/>
+  <owl:ObjectProperty rdf:ID="hasComment"/>
+  <owl:ObjectProperty rdf:ID="hasLargeImage"/>
+  <owl:ObjectProperty rdf:ID="hasTag"/>
+  <owl:ObjectProperty rdf:ID="hasAuthor"/>
+  <owl:ObjectProperty rdf:ID="hasHomepage"/>
+  <owl:ObjectProperty rdf:ID="hasMediumImage"/>
+  <owl:ObjectProperty rdf:ID="hasSmallImage"/>
+  <owl:DatatypeProperty rdf:ID="value"/>
+  <owl:DatatypeProperty rdf:ID="title"/>
+  <owl:DatatypeProperty rdf:ID="geoAccuracy"/>
+  <owl:DatatypeProperty rdf:ID="lastUpdated"/>
+  <owl:DatatypeProperty rdf:ID="userId">
+    <rdfs:domain rdf:resource="#User"/>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:ID="licenseId"/>
+  <owl:DatatypeProperty rdf:ID="text"/>
+  <owl:DatatypeProperty rdf:ID="keyword"/>
+  <owl:DatatypeProperty rdf:ID="tagId">
+    <rdfs:domain rdf:resource="#Tag"/>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:ID="raw"/>
+  <owl:DatatypeProperty rdf:ID="userName"/>
+  <owl:DatatypeProperty rdf:ID="pathAlias"/>
+  <owl:DatatypeProperty rdf:ID="placeId"/>
+  <owl:DatatypeProperty rdf:ID="photoId">
+    <rdfs:domain rdf:resource="#Photo"/>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:ID="dateCreated"/>
+  <owl:DatatypeProperty rdf:ID="latitude"/>
+  <owl:DatatypeProperty rdf:ID="longitude"/>
+  <owl:DatatypeProperty rdf:ID="datePosted"/>
+  <owl:DatatypeProperty rdf:ID="dateAdded"/>
+  <owl:DatatypeProperty rdf:ID="commentId">
+    <rdfs:domain rdf:resource="#Comment"/>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:ID="dateTaken"/>
+</rdf:RDF>
+
+<!-- Created with TopBraid -->

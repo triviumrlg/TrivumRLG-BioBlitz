@@ -1,0 +1,27 @@
+Build Instructions:
+
+  1) Simply run ant in the project directory.
+
+  % ant
+
+
+Running Instructions:
+
+  1) Create a properties file from the provided sample:
+
+  % cp BioBlitzImages.properties.sample BioBlitzImages.properties
+
+  2) Edit the properties file, set your Flickr and Project Noah API keys.
+     See http://docs.projectnoah.org/ to sign up for a Project Noah API key,
+     and see http://www.flickr.com/services/apps/create/ for Flickr API keys.
+
+  % vi BioBlitzImages.properties #set api keys
+
+  3) Run the code, to download data from Flickr and Project Noah, and create
+     the Exhibit data file.
+
+  % java -jar build/bioblitzimages.jar --make-exhibit > www/data.js
+
+  4) Run Exhibit. Point your browser to the www/index.html file, or
+     deploy the www directory (with the generated data.js file) to your
+     webserver.
