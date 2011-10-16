@@ -12,6 +12,7 @@
   <script src="http://trunk.simile-widgets.org/exhibit/api/exhibit-api.js"></script>
   <script src="http://trunk.simile-widgets.org/exhibit/api/extensions/time/time-extension.js"></script>
   <script src="http://trunk.simile-widgets.org/exhibit/api/extensions/map/map-extension.js?gmapkey=ABQIAAAAy8U9B04d7RS_X2CFVtaJvhRFdO5h7CS1tqZ2w2R3LPLWPGfEwRT3J3CLBozqDtAnNC0aFEfO0kz2sA"></script>
+ <script src="http://trunk.simile-widgets.org/exhibit/api/extensions/calendar/calendar-extension.js"></script>
 </head>
 
 <body>
@@ -26,8 +27,10 @@
     <div id="bb_facets">
       <div ex:role="facet" ex:facetClass="TextSearch" ex:facetLabel="Search"></div>
       <div ex:role="facet" ex:expression=".source" ex:facetLabel="Source" ex:height="50px"></div>
-      <div ex:role="facet" ex:expression=".state" ex:facetLabel="State"></div>
+      <div ex:role="facet" ex:expression=".state" ex:facetLabel="State" ex:height="75px"></div>
       <div ex:role="facet" ex:expression=".photographer" ex:facetLabel="Photographer" ex:height="300px"></div>
+      <div ex:role="facet" ex:beginDate=".submitted" ex:facetLabel="Date Submitted" ex:facetClass="DatePicker"></div>
+      <div ex:role="facet" ex:beginDate=".created" ex:facetLabel="Date Created" ex:facetClass="DatePicker"></div>
       <div ex:role="facet" ex:expression=".kingdom" ex:facetLabel="Kingdom (EOL)"></div>
       <div ex:role="facet" ex:expression=".phylum" ex:facetLabel="Phylum (EOL)"></div>
       <div ex:role="facet" ex:expression=".class" ex:facetLabel="Class (EOL)"></div>

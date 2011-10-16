@@ -90,6 +90,7 @@ div.thumbnail {
   width: 280px;
   position: absolute;
   padding: 4px;
+  background-color: #FFFFFF;
 }
 
 #bb_content {
