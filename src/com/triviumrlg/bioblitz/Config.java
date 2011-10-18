@@ -45,6 +45,7 @@ public class Config {
 	public static String FLICKR_GROUPURL = "bioblitz.flickr.groupURL";
 	public static String FLICKR_SECRET = "bioblitz.flickr.secret";
 	public static String FLICKR_LIMIT = "bioblitz.flickr.limit";
+	public static String FLICKR_CACHEFILE = "bioblitz.flickr.cachefile";
 
 	public static String EOL_ENDPOINT = "bioblitz.eol.endpoint";
 	public static String EOL_LOGFILE = "bioblitz.eol.logfile";
@@ -67,6 +68,7 @@ public class Config {
 		props.setProperty(FLICKR_ENDPOINT, "http://api.flickr.com/");
 		props.setProperty(FLICKR_GROUPURL,
 				"http://www.flickr.com/groups/1725510@N21");
+		props.setProperty(FLICKR_CACHEFILE, "flickr_cache.obj");
 
 		props.setProperty(EOL_ENDPOINT, "http://eol.org/api/");
 		props.setProperty(EOL_CACHEFILE, "eol_cache.obj");

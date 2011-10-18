@@ -133,6 +133,7 @@ public class Main {
 		FlickrConnection flickr = new FlickrConnection();
 		Model model = flickr.getPhotoModel(Config
 				.property(Config.FLICKR_GROUPURL));
+		flickr.close();
 
 		return model;
 	}

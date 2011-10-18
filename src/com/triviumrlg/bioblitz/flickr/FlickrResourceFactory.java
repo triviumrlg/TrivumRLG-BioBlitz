@@ -25,13 +25,13 @@ package com.triviumrlg.bioblitz.flickr;
 import java.util.List;
 
 import com.aetrion.flickr.people.User;
-import com.aetrion.flickr.photos.GeoData;
 import com.aetrion.flickr.photos.Photo;
-import com.aetrion.flickr.photos.comments.Comment;
-import com.aetrion.flickr.tags.Tag;
 import com.hp.hpl.jena.rdf.model.Model;
 import com.hp.hpl.jena.rdf.model.Resource;
 import com.triviumrlg.bioblitz.Vocabs;
+import com.triviumrlg.bioblitz.flickr.cache.Comment;
+import com.triviumrlg.bioblitz.flickr.cache.GeoData;
+import com.triviumrlg.bioblitz.flickr.cache.Tag;
 import com.triviumrlg.bioblitz.utils.RDFHelper;
 
 public class FlickrResourceFactory {

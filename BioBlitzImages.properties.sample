@@ -35,6 +35,9 @@ bioblitz.flickr.secret=XXX
 #If set to true, will dump the flickr request/response data to stdout
 #bioblitz.flickr.dumpstream=true
 
+#Object cache for Flickr data
+#bioblitz.flickr.cachefile=flickr_cache.obj
+
 #EOL API endpoint.
 #bioblitz.eol.endpoint=http://eol.org/api/
 

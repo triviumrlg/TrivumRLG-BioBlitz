@@ -22,7 +22,11 @@
 
 package com.triviumrlg.bioblitz.flickr;
 
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.LinkedList;
@@ -46,6 +50,8 @@ import com.aetrion.flickr.tags.TagsInterface;
 import com.hp.hpl.jena.rdf.model.Model;
 import com.hp.hpl.jena.rdf.model.ModelFactory;
 import com.triviumrlg.bioblitz.Config;
+import com.triviumrlg.bioblitz.flickr.cache.PhotoCache;
+import com.triviumrlg.bioblitz.flickr.cache.PhotoData;
 
 public class FlickrConnection {
 	private Flickr client;
@@ -55,6 +61,7 @@ public class FlickrConnection {
 	private TagsInterface tagsClient;
 	private CommentsInterface commentsClient;
 	private int limit;
+	private PhotoCache cache;
 
 	public FlickrConnection() {
 		this(Config.property(Config.FLICKR_APIKEY), Config
@@ -83,6 +90,18 @@ public class FlickrConnection {
 		if ("true".equalsIgnoreCase(Config.property(Config.FLICKR_DUMPSTREAM))) {
 			Flickr.debugRequest = true;
 			Flickr.debugStream = true;
+		}
+
+		try {
+			ObjectInputStream in = new ObjectInputStream(new FileInputStream(
+					Config.property(Config.FLICKR_CACHEFILE)));
+			try {
+				cache = (PhotoCache) in.readObject();
+			} finally {
+				in.close();
+			}
+		} catch (Exception e) {
+			cache = new PhotoCache();
 		}
 	}
 
@@ -114,22 +133,42 @@ public class FlickrConnection {
 		visitPhotos(groupId, new PhotoVisitor() {
 			@Override
 			public boolean visit(int num, Photo photo) {
+				List<Tag> tags;
+				List<Comment> comments;
+				GeoData geo;
+				PhotoData cache_item = null;
+
 				try {
-					List<Tag> tags = new LinkedList<Tag>();
-					for (Object t : tagsClient.getListPhoto(photo.getId())
-							.getTags())
-						tags.add((Tag) t);
+					cache_item = cache.get(photo.getId());
+					if (cache_item != null
+							&& !cache_item.getLastUpdate().equals(
+									photo.getLastUpdate())) {
+						cache.remove(photo.getId());
+						cache_item = null;
+					}
 
-					List<Comment> comments = new LinkedList<Comment>();
-					for (Object c : commentsClient.getList(photo.getId()))
-						comments.add((Comment) c);
+					if (cache_item == null) {
+						tags = new LinkedList<Tag>();
+						for (Object t : tagsClient.getListPhoto(photo.getId())
+								.getTags())
+							tags.add((Tag) t);
 
-					GeoData geo = null;
+						comments = new LinkedList<Comment>();
+						for (Object c : commentsClient.getList(photo.getId()))
+							comments.add((Comment) c);
 
-					if (photo.hasGeoData())
-						geo = photo.getGeoData();
+						geo = null;
 
-					factory.createPhoto(photo, tags, comments, geo);
+						if (photo.hasGeoData())
+							geo = photo.getGeoData();
+
+						cache_item = new PhotoData(photo.getLastUpdate(), tags,
+								comments, geo);
+						cache.put(photo.getId(), cache_item);
+					}
+
+					factory.createPhoto(photo, cache_item.getTags(),
+							cache_item.getComments(), cache_item.getGeo());
 					return limit == 0 || num < limit;
 				} catch (Exception e) {
 					throw new RuntimeException("Could not process flickr data",
@@ -154,7 +193,7 @@ public class FlickrConnection {
 	public void visitPhotos(String groupId, PhotoVisitor visitor, int num,
 			int page) throws IOException, SAXException, FlickrException {
 		PhotoList list = client.getPoolsInterface().getPhotos(groupId, null,
-				Extras.ALL_EXTRAS, limit < 500 ? limit : 0, page);
+				Extras.ALL_EXTRAS, limit < 500 ? limit : 500, page);
 
 		for (Object photoObj : list) {
 			Photo photo = (Photo) photoObj;
@@ -169,5 +208,19 @@ public class FlickrConnection {
 
 	private interface PhotoVisitor {
 		public boolean visit(int num, Photo photo);
+	}
+
+	public void close() {
+		try {
+			ObjectOutputStream out = new ObjectOutputStream(
+					new FileOutputStream(
+							Config.property(Config.FLICKR_CACHEFILE)));
+			try {
+				out.writeObject(cache);
+			} finally {
+				out.close();
+			}
+		} catch (Exception e) {
+		}
 	}
 }
