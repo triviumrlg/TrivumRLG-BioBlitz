@@ -167,11 +167,6 @@ public class CommentResourceFactory {
 								model.createTypedLiteral(value));
 					}
 				}
-
-				// System.err.println("photo: " + comment.get("photo"));
-				// System.err.println("author: " + comment.get("author"));
-				// System.err.println("created: " + comment.get("created"));
-				// System.err.format("   %s = %s\n", name, value);
 			}
 		}
 
