@@ -25,7 +25,6 @@ package com.triviumrlg.bioblitz.eol;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
-import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.io.PrintStream;
@@ -74,12 +73,16 @@ public class EOLConnection {
 			}
 		}
 
-		cache = new SpeciesCache();
 		try {
-			ObjectInputStream out = new ObjectInputStream(new FileInputStream(
+			ObjectInputStream in = new ObjectInputStream(new FileInputStream(
 					Config.property(Config.EOL_CACHEFILE)));
-			cache = (SpeciesCache) out.readObject();
+			try {
+				cache = (SpeciesCache) in.readObject();
+			} finally {
+				in.close();
+			}
 		} catch (Exception e) {
+			cache = new SpeciesCache();
 		}
 	}
 
@@ -168,12 +171,9 @@ public class EOLConnection {
 	public Species speciesTaxaSearch(String speciesName) {
 		Species species;
 
-		if (cache.hasSpecies(speciesName)) {
-			System.err.println(speciesName + " from cache");
+		if (cache.hasSpecies(speciesName))
 			return cache.get(speciesName);
-		}
 
-		System.err.println(speciesName + " from eol");
 		species = speciesTaxaSearch(speciesName, null);
 		cache.put(speciesName, species);
 
@@ -195,7 +195,6 @@ public class EOLConnection {
 			try {
 				Thread.sleep(2000);
 			} catch (InterruptedException e) {
-				// System.err.println("interrupted sleep");
 			}
 		}
 
@@ -214,9 +213,12 @@ public class EOLConnection {
 		try {
 			ObjectOutputStream out = new ObjectOutputStream(
 					new FileOutputStream(Config.property(Config.EOL_CACHEFILE)));
-			out.writeObject(cache);
-		} catch (FileNotFoundException e) {
-		} catch (IOException e) {
+			try {
+				out.writeObject(cache);
+			} finally {
+				out.close();
+			}
+		} catch (Exception e) {
 		}
 	}
 }
