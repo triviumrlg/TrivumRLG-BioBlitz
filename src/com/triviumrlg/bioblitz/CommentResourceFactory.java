@@ -44,7 +44,7 @@ import com.hp.hpl.jena.util.FileManager;
 public class CommentResourceFactory {
 	private Model base_model;
 	private Model model;
-	private Set<String> scientists;
+	private Map<String, Integer> scientists;
 
 	public CommentResourceFactory(Model base_model) {
 		this.base_model = base_model;
@@ -65,13 +65,15 @@ public class CommentResourceFactory {
 	}
 
 	private void loadScientists() {
-		scientists = new HashSet<String>();
+		scientists = new HashMap<String, Integer>();
 
 		StringBuffer queryStr = new StringBuffer();
 		queryStr.append(Vocabs.SPARQLPrefixes());
-		queryStr.append("SELECT ?author\n");
+		queryStr.append("SELECT ?index ?member\n");
 		queryStr.append("WHERE {\n");
-		queryStr.append("  ?author photos:isScientist true .\n");
+		queryStr.append("  photos:Scientists photos:priorityList [\n");
+		queryStr.append("    <http://jena.hpl.hp.com/ARQ/list#index> (?index ?member)\n");
+		queryStr.append("  ] .\n");
 		queryStr.append("}\n");
 
 		Query query = QueryFactory.create(queryStr.toString());
@@ -82,7 +84,8 @@ public class CommentResourceFactory {
 
 			while (results.hasNext()) {
 				QuerySolution sol = results.next();
-				scientists.add(sol.get("author").asResource().getURI());
+				scientists.put(sol.get("member").asResource().getURI(), sol
+						.get("index").asLiteral().getInt());
 			}
 		} finally {
 			ex.close();
@@ -127,8 +130,33 @@ public class CommentResourceFactory {
 		base_model.add(model);
 	}
 
+	private class SpeciesTag {
+		private String species;
+		private String photo;
+		private int priority;
+
+		public SpeciesTag(String species, String photo, int priority) {
+			this.species = species;
+			this.photo = photo;
+			this.priority = priority;
+		}
+
+		public String getSpecies() {
+			return species;
+		}
+
+		public String getPhoto() {
+			return photo;
+		}
+
+		public int getPriority() {
+			return priority;
+		}
+	}
+
 	private void processComments(List<Map<String, String>> comments) {
 		Set<String> ignore_list = new HashSet<String>();
+		Map<String, SpeciesTag> species = new HashMap<String, SpeciesTag>();
 
 		Pattern tag_pattern = Pattern
 				.compile("\\[\\[\\s*([^=]+)\\s*=\\s*([^\\]]+)\\s*\\]\\]");
@@ -161,13 +189,25 @@ public class CommentResourceFactory {
 					else
 						ignore_list.remove(comment.get("photo"));
 				} else if (name.equalsIgnoreCase("species")) {
-					if (scientists.contains(comment.get("author"))) {
-						model.createResource(comment.get("photo")).addProperty(
-								Vocabs.prop("photos", "scientistNamedSpecies"),
-								model.createTypedLiteral(value));
+					if (scientists.containsKey(comment.get("author"))) {
+						String author = comment.get("author");
+						String photo = comment.get("photo");
+						int priority = scientists.get(author);
+						SpeciesTag tag = species.get(photo);
+
+						if (tag == null || tag.getPriority() > priority)
+							tag = new SpeciesTag(value, photo, priority);
+
+						species.put(photo, tag);
 					}
 				}
 			}
+		}
+
+		for (SpeciesTag tag : species.values()) {
+			model.createResource(tag.getPhoto()).addProperty(
+					Vocabs.prop("photos", "scientistNamedSpecies"),
+					model.createTypedLiteral(tag.getSpecies()));
 		}
 
 		for (String uri : ignore_list) {
