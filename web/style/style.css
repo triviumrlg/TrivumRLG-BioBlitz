@@ -71,13 +71,25 @@ div.thumbnail {
 #bb_header h4 {
   color:      #EEEEEE;
   display:    block;
+  font-size:  1.5em;
+  font-style: italic;
+  margin:     0;
+  padding:    0;
+  position:   absolute;
+  left:       70px;
+  top:        15px;
+}
+
+#bb_header h3 {
+  color:      #EEEEEE;
+  display:    block;
   font-size:  1.1em;
   font-style: italic;
   margin:     0;
   padding:    0;
   position:   absolute;
   left:       70px;
-  top:        8px;
+  top:        40px;
 }
 
 #bb_main {
