@@ -66,14 +66,26 @@
              ex:pagingControlLocations="top"
              ex:label="Data">
         </div>
-  
+
+        <div ex:role="view"
+             ex:viewClass="Tabular"
+             ex:label="Details"
+             ex:columns=".created,.homepage,.small_thumbnail,.photographer,.species,.kingdom,.phylum,.class,.order,.family,.genus"
+             ex:columnLabels="Created,Source,Photo,Photographer,Species,Kingdom,Phylym,Class,Order,Family,Genus"
+             ex:columnFormats="date { template : 'yyyy-MM-dd' },url,image,list,list,list,list,list,list,list,list"
+             ex:sortColumn="0"
+             ex:sortAscending="false">
+        </div>
+
         <div ex:role="view"
              ex:viewClass="Map"
              ex:label="Map"
              ex:latlng=".lat_long"
              ex:center="32.221743,-110.926479"
              ex:zoom="11"
-             ex:mapHeight="500"
+             ex:icon=".small_thumbnail"
+             ex:iconSize="50"
+             ex:mapHeight="600"
              ex:overviewControl="true"
              ex:showHeader="false">
           <div ex:role="lens" style="display: none; height: 300px; width: 300px">
